@@ -14,7 +14,6 @@ class DB {
                 Config::get('mysql/username'), 
                 Config::get('mysql/password')
             );
-            echo 'Connected';
         } catch(PDOException $e) {
             die($e->getMessage());
         }
@@ -25,5 +24,30 @@ class DB {
             self::$_instance = new DB();
         }
         return self::$_instance;
+    }
+
+    public function query($sql, $params = array()) {
+        $this->_error = false;
+        if($this->_query = $this->_pdo->prepare($sql)) {
+            $x = 1;
+            if(count($params)) {
+                foreach ($params as $param) {
+                    $this->_query->bindValue($x, $param);
+                    $x++;
+                }
+            }
+
+            if($this->_query->execute()) {
+                $this->_results = $this->_query->fetch(PDO::FETCH_OBJ);
+                $this->_count = $this->_query->rowCount();
+            } else {
+                $this->_error = true;
+            }
+        }
+        return $this;
+    }
+
+    public function error(){
+        return $this->_error;
     }
 }
