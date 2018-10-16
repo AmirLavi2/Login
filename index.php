@@ -11,5 +11,8 @@ $user = DB::getInstance()->get('user', array('firstname', '=', 'amir'));
 if(!$user->count()) {
     echo 'No user';
 } else {
-    echo 'OK!';
+    // foreach($user->results() as $user) {
+    //     echo $user->firstname, '<br>';
+    // } 
+    echo $user->first()->firstname;
 }
