@@ -6,13 +6,6 @@ ini_set('display_startup_errors', TRUE);
 require_once 'core/init.php';
 
 
-$user = DB::getInstance()->get('user', array('firstname', '=', 'amir'));
-
-if(!$user->count()) {
-    echo 'No user';
-} else {
-    // foreach($user->results() as $user) {
-    //     echo $user->firstname, '<br>';
-    // } 
-    echo $user->first()->firstname;
-}
+$user = DB::getInstance()->update('user', 2, array(
+    'password' => 'newPass'
+));
