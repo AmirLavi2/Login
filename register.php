@@ -35,8 +35,8 @@ if(Input::exists()) {
 
 <form action="" method="post">
     <div class="field">
-        <label for="firstname">Firstname</label>
-        <input type="text" name="firstname" id="firstname" autocomplete="off">
+        <label for="username">Username</label>
+        <input type="text" name="username" value="<?php echo escape( Input::get('username') ); ?>" id="username" autocomplete="off">
     </div>
 
     <div class="field">
@@ -51,7 +51,7 @@ if(Input::exists()) {
 
     <div class="field">
         <label for="name">Name</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name"  value="<?php echo escape( Input::get('name') ); ?>" id="name">
     </div>
 
     <input type="submit" value="Register">

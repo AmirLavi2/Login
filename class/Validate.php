@@ -9,11 +9,11 @@ class Validate {
     }
 
     public function check($source, $items = array()) {
-        foreach ($items as $item =>$rules) {
+        foreach ($items as $item => $rules) {
             foreach ($rules as $rule => $rule_value) {
                 $value = $source[$item];
 
-                if( $role === 'required' && empty($value) ) {
+                if( $rule === 'required' && empty($value) ) {
                     $this->addError("{$item} is required");
                 } else {
 
