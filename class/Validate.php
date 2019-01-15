@@ -15,4 +15,14 @@ class Validate {
             }
         }
     }
+
+    private function addError($error) {
+        $this->_errors[] = $error;
+    }
+    public function errors() {
+        return $this->_errors;
+    }
+    public function passed() {
+        return $this->_passed;
+    }
 }
